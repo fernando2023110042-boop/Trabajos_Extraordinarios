@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="estilos.css">
+    <title>Productos</title>
+</head>
+
+<body>
+
+    <div class="contenedor">
+        <h1>Productos</h1>
+
+        <h2>Agregar producto</h2>
+
+        <form id="form-producto">
+            <input type="hidden" id="index-editar">
+
+            <input type="text" id="nombre" placeholder="Producto" required>
+            <input type="text" id="precio" placeholder="Precio" required>
+            <input type="text" id="lugar" placeholder="Lugar" required>
+
+            <button type="submit" id="btn-guardar">Agregar</button>
+        </form>
+
+        <br>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Lugar</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-productos"></tbody>
+        </table>
+
+        <br>
+
+        <a href="/">Regresar al Home</a>
+
+    </div>
+
+    <script src="productos.js"></script>
+
+</body>
+
+</html>

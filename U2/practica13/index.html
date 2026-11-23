@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Práctica 13 - Vue.js</title>
+  <!-- CDN de Vue 3 -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+    }
+
+    .contenedor {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      color: #1f2937;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #4b5563;
+      margin-bottom: 25px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #42b883;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #33a06f;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app" class="contenedor">
+    <h1>{{ mensaje }}</h1>
+    <p>{{ descripcion }}</p>
+    <button @click="cambiarMensaje">{{ textoBoton }}</button>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          esBienvenida: true,
+          mensaje: '¡Bienvenido a nuestra página con Vue.js!',
+          descripcion: 'Presiona el botón de abajo para cambiar el saludo.',
+          textoBoton: 'Cambiar a despedida'
+        };
+      },
+      methods: {
+        cambiarMensaje() {
+          if (this.esBienvenida) {
+            this.mensaje = '¡Hasta luego! Gracias por visitar la página.';
+            this.descripcion = 'Nos vemos pronto.';
+            this.textoBoton = 'Volver a bienvenida';
+            this.esBienvenida = false;
+          } else {
+            this.mensaje = '¡Bienvenido a nuestra página con Vue.js!';
+            this.descripcion = 'Presiona el botón de abajo para cambiar el saludo.';
+            this.textoBoton = 'Cambiar a despedida';
+            this.esBienvenida = true;
+          }
+        }
+      }
+    }).mount('#app');
+  </script>
+
+</body>
+</html>

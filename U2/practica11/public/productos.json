@@ -1,0 +1,52 @@
+[
+    {
+        "nombre": "PlayStation 5 Pro",
+        "precio": "$15,000",
+        "lugar": "Amazon"
+    },
+    {
+        "nombre": "MacBook Pro M3",
+        "precio": "$28,000",
+        "lugar": "Apple Store"
+    },
+    {
+        "nombre": "Monitor LG OLED 27\"",
+        "precio": "$14,000",
+        "lugar": "Best Buy"
+    },
+    {
+        "nombre": "Audífonos Sony WH-1000XM5",
+        "precio": "$6,500",
+        "lugar": "Liverpool"
+    },
+    {
+        "nombre": "Teclado Mecánico Keychron Q1",
+        "precio": "$2,900",
+        "lugar": "Keychron Store"
+    },
+    {
+        "nombre": "Silla Herman Miller Embody",
+        "precio": "$25,000",
+        "lugar": "Herman Miller Store"
+    },
+    {
+        "nombre": "Nintendo Switch 2",
+        "precio": "$9,500",
+        "lugar": "Sams"
+    },
+    {
+        "nombre": "Mouse Logitech MX Master 3S",
+        "precio": "$1,700",
+        "lugar": "Amazon"
+    },
+    {
+        "nombre": "Escritorio Elevable Jarvis",
+        "precio": "$10,000",
+        "lugar": "Fully"
+    },
+    {
+        "nombre": "Consola Steam Deck OLED",
+        "precio": "$11,500",
+        "lugar": "Steam Store"
+    }
+]

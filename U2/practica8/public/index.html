@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Chat</title>
+</head>
+
+<body>
+
+    <h1>Chat UPMP</h1>
+
+    <div id="login">
+        <h2>Login</h2>
+        <input id="usuario" placeholder="Nombre de usuario">
+        <button onclick="entrarChat()">
+            Entrar al chat
+        </button>
+    </div>
+
+    <div id="chatPrincipal" style="display: none;">
+
+        <h2>Chat general</h2>
+        <input id="mensajeGeneral" placeholder="Escribe un mensaje general">
+        <button onclick="enviarMensajeGeneral()">
+            Enviar general
+        </button>
+
+        <hr>
+
+        <h2>Usuarios conectados</h2>
+        <ul id="usuariosConectados"></ul>
+
+        <hr>
+
+        <h2>Mensaje privado</h2>
+
+        <select id="usuarioDestino">
+            <option values="">Selecione un usuario</option>
+        </select>
+
+        <input id="mensajePrivado" placeholder="Escribe un mensaje privado">
+        <button onclick="enviarMensajePrivado()">
+            Enviar privado
+        </button>
+
+        <hr>
+
+        <h2>Mensajes</h2>
+
+        <button onclick="limpiarchat()">
+            Limpiar chat
+        </button>
+
+        <div id="chat"></div>
+
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

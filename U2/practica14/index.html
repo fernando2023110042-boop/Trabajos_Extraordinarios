@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Práctica 14 - Vue.js pt. 2</title>
+  <!-- CDN de Vue 3 -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4f6f8;
+      color: #1f2937;
+    }
+
+    .contenedor {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .tarjeta {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    h1, h2 {
+      margin-top: 0;
+      color: #1f2937;
+    }
+
+    /* Estilos del Contador */
+    .contador-box {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .etiqueta-contador {
+      font-size: 20px;
+      font-weight: bold;
+      background-color: #eef2ff;
+      color: #1e3a8a;
+      padding: 10px 18px;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 10px 18px;
+      font-size: 15px;
+      font-weight: bold;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn-restar { background-color: #dc2626; }
+    .btn-restar:hover { background-color: #b91c1c; }
+
+    .btn-sumar { background-color: #16a34a; }
+    .btn-sumar:hover { background-color: #15803d; }
+
+    .btn-agregar { background-color: #2563eb; }
+    .btn-agregar:hover { background-color: #1d4ed8; }
+
+    /* Estilos del Formulario */
+    .formulario {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .formulario input {
+      flex: 1;
+      min-width: 180px;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    /* Estilos de la Tabla */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      background-color: #1f2937;
+      color: #ffffff;
+      padding: 12px;
+      text-align: left;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    tr:hover {
+      background-color: #f8fafc;
+    }
+
+    .estado {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .aprobado {
+      background-color: #dcfce7;
+      color: #166534;
+    }
+
+    .reprobado {
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app" class="contenedor">
+    <h1>Práctica 14: Vue.js pt. 2</h1>
+
+    <!--Contador -->
+    <div class="tarjeta">
+      <h2>1. Contador</h2>
+      <div class="contador-box">
+        <label class="etiqueta-contador">Contador: {{ contador }}</label>
+        <button class="btn-restar" @click="contador--">- Disminuir</button>
+        <button class="btn-sumar" @click="contador++">+ Aumentar</button>
+      </div>
+    </div>
+
+    <!--Formulario y Tabla de Estudiantes -->
+    <div class="tarjeta">
+      <h2>2. Registro de Estudiantes</h2>
+
+      <form class="formulario" @submit.prevent="agregarEstudiante">
+        <input
+          type="text"
+          v-model="nuevoNombre"
+          placeholder="Nombre del estudiante"
+          required
+        >
+        <input
+          type="number"
+          v-model.number="nuevaCalificacion"
+          placeholder="Calificación (0 - 100)"
+          min="0"
+          max="100"
+          step="0.1"
+          required
+        >
+        <button type="submit" class="btn-agregar">Agregar estudiante</button>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Calificación</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(estudiante, index) in estudiantes" :key="index">
+            <td>{{ estudiante.nombre }}</td>
+            <td>{{ estudiante.calificacion }}</td>
+            <td>
+              <span
+                class="estado"
+                :class="estudiante.calificacion >= 70 ? 'aprobado' : 'reprobado'"
+              >
+                {{ estudiante.calificacion >= 70 ? 'Aprobado' : 'Reprobado' }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          contador: 0,
+          nuevoNombre: '',
+          nuevaCalificacion: '',
+          estudiantes: [
+            { nombre: 'Ana García', calificacion: 90 },
+            { nombre: 'Luis Martínez', calificacion: 55 },
+            { nombre: 'Sofía Hernández', calificacion: 82 }
+          ]
+        };
+      },
+      methods: {
+        agregarEstudiante() {
+          if (this.nuevoNombre.trim() === '' || this.nuevaCalificacion === '') return;
+
+          this.estudiantes.push({
+            nombre: this.nuevoNombre.trim(),
+            calificacion: Number(this.nuevaCalificacion)
+          });
+
+          this.nuevoNombre = '';
+          this.nuevaCalificacion = '';
+        }
+      }
+    }).mount('#app');
+  </script>
+
+</body>
+</html>

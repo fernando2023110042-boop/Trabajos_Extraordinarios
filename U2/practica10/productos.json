@@ -1,0 +1,13 @@
+[
+  { "nombre": "PlayStation 5 Pro", "precio": 12000, "lugar_venta": "Amazon" },
+  { "nombre": "MacBook Pro M3", "precio": 28000, "lugar_venta": "Apple Store" },
+  { "nombre": "Monitor LG OLED 27\"", "precio": 14000, "lugar_venta": "Best Buy" },
+  { "nombre": "Audífonos Sony WH-1000XM5", "precio": 6500, "lugar_venta": "Liverpool" },
+  { "nombre": "Teclado Mecánico Keychron Q1", "precio": 2900, "lugar_venta": "Keychron Store" },
+  { "nombre": "Silla Herman Miller Embody", "precio": 25000, "lugar_venta": "Herman Miller Store" },
+  { "nombre": "Nintendo Switch OLED", "precio": 6000, "lugar_venta": "Mercado Libre" },
+  { "nombre": "Mouse Logitech MX Master 3S", "precio": 1700, "lugar_venta": "Amazon" },
+  { "nombre": "Escritorio Elevable Jarvis", "precio": 10000, "lugar_venta": "Fully" },
+  { "nombre": "Consola Steam Deck OLED", "precio": 9500, "lugar_venta": "Steam Store" },
+  { "nombre": "Cámara Canon EOS R6", "precio": 35000, "lugar_venta": "Canon Store" }
+]
